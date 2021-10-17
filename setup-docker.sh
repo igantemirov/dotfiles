@@ -38,26 +38,8 @@ echo \
 apt-get update
 apt-get install docker-ce docker-ce-cli containerd.io
 
-# Create the docker group.
-groupadd docker
-
-# Add your user to the docker group.
-usermod -aG docker $USER
-
-# Activate the changes to groups:
-newgrp docker 
-
-# Start docker service manualy (need to be started at every wsl launch)
-service docker start
-
-# Verify that Docker Engine is installed correctly by running the hello-world image.
-docker run hello-world
-
 # Install stable release of Docker Compose:
 curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 
 # Apply executable permissions to the binary:
 chmod +x /usr/local/bin/docker-compose
-
-# Test the installation.
-docker-compose --version
